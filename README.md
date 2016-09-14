@@ -1,4 +1,4 @@
 # Analyse
-Using to analyse a js file
+Using to analyse a js project
 
-主要是分析commonjs的文件的内容,并展示效果
+Analyse a project
