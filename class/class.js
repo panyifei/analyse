@@ -1,23 +1,26 @@
 'use strict';
 
 class Dir{
-    constructor(__route) {
+    constructor(__route,name) {
         this.__route = __route;
+        this.name = name;
+        this.type = '';
         this.dirList = [];
         this.fileList = [];
     }
 }
 
 class Project extends Dir{
-    constructor(__route) {
-        super(__route);
+    constructor(__route, name) {
+        super(__route, name);
     }
 }
 
 class File{
-    constructor(__route, fileName) {
+    constructor(__route, name) {
         this.__route = __route;
-        this.type = fileName;
+        this.name = name;
+        this.type = '';
     }
 }
 
