@@ -1,8 +1,27 @@
 <html>
 <head>
-    <title>Blog</title>
+    <title>Analyse</title>
+    <link rel="stylesheet" href="../static/css/reset.css">
+    <link rel="stylesheet" href="../static/css/index.css">
 </head>
 <body>
-{{ project.type }}
+<section class="project">
+    <p class="name">{{ project.name }}</p>
+    <section class="dir-list">
+        {% for dir in project.dirList %}
+        <section class="dir">
+            {{ dir.name }}
+        </section>
+        {% endfor %}
+    </section>
+    <section class="file-list">
+        {% for file in project.fileList %}
+        <section class="file">
+            {{ dir.file }}
+        </section>
+        {% endfor %}
+    </section>
+</section>
+
 </body>
 </html>

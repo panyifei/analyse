@@ -3,6 +3,12 @@
 let koa = require('koa');
 let app = koa();
 let render = require('./lib/render');
+let server = require('koa-static');
+const logger = require('koa-logger');
+
+app.use(logger());
+
+app.use(server(__dirname + '/.'));
 
 //代替数据库
 let project;
