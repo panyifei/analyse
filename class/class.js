@@ -24,8 +24,17 @@ class File{
     }
 }
 
+class JsxFile extends File{
+    constructor(file) {
+        super(file.__route, file.name);
+        this.fatherComponent = null;
+        this.childComponent = [];
+    }
+}
+
 module.exports = {
     Project : Project,
     Dir : Dir,
-    File : File
+    File : File,
+    JsxFile : JsxFile
 }

@@ -3,7 +3,9 @@
 let fs = require('fs');
 let colors = require('colors');
 let Dir = require('../class/class').Dir;
+let Project = require('../class/class').Project;
 let File = require('../class/class').File;
+let JsxFile = require('../class/class').JsxFile;
 let Help = require('../util/help');
 let FileType = require('../util/file-type');
 
@@ -53,8 +55,11 @@ Fs.checkType = dir =>{
     //check file type
     function checkFileList(dir) {
         let typeList = [];
-        dir.fileList.forEach(function (value) {
+        dir.fileList.forEach(function (value ,index ,array) {
             value.type = Help.checkFileType(value.name);
+            if(value.type == FileType.JSX){
+                array[index] = new JsxFile(value);
+            }
             if(typeList.indexOf(value.type) == -1){
                 typeList.push(value.type);
             }
