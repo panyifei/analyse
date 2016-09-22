@@ -7,6 +7,7 @@ let Server = require('../server/server');
 let Analyse = require('../util/anlyse');
 
 let Fs = require('../util/fs');
+// let project = new Project('/Users/pyf/code/dianping/orderdish/app-menuorder-h5','app-menuorder-h5');
 let project = new Project('/Users/pyf/code/dianping/booking/app-booking-ossweb','app-booking-ossweb');
 
 //loop the whole project

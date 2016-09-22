@@ -1,5 +1,6 @@
 'use strict';
 //analyse a jsx file
+let colors = require('colors');
 const path  = require('path');
 const esprima = require('esprima');
 const BabelCore = require("babel-core");
@@ -30,6 +31,19 @@ AnalyseJsx.analyse = (jsxFile ,pro) => {
                 var component = Help.loop(pro, componentPath);
                 component.fatherComponent = jsxFile;
                 jsxFile.childComponent.push(component);
+            }else if(declara.specifiers[0]){
+                console.log(declara);
+                let name = declara.specifiers[0].local.name;
+                if(new RegExp("React.createElement\\(" + name + ",","g").test(jscode)){
+                    let componentPath = path.join(filePath,'..',declara.source.value + ".jsx");
+                    var component = Help.loop(pro, componentPath);
+                    if(component != null){
+                        component.fatherComponent = jsxFile;
+                        jsxFile.childComponent.push(component);
+                    }else{
+                        console.log(colors.red('there is a jsx file named as js file'));
+                    }
+                }
             }
         }
     })
