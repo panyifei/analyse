@@ -3,18 +3,36 @@
 const esprima = require('esprima');
 const BabelCore = require("babel-core");
 
-let filePath = "../test/test.jsx";
-//change jsx to js
-const bebalRes = BabelCore.transformFileSync(filePath , {
-    plugins: ["transform-react-jsx"]
-});
+let AnalyseJsx = {};
 
-var jscode =  bebalRes.code;
+AnalyseJsx.analyse = (jsxFile) => {
 
-console.log(jscode);
+    const filePath = jsxFile.__route;;
 
-//esprima need to special build as module
-let ast = esprima.parse(jscode,{ sourceType: 'module' });
+    //change jsx to js
+    const babelRes = BabelCore.transformFileSync(filePath , {
+        plugins: ["transform-react-jsx"]
+    });
+
+    const jscode =  babelRes.code;
+
+    //esprima need to special build as module
+    const ast = esprima.parse(jscode,{ sourceType: 'module' });
+
+    let proBody = ast.body;
+
+    proBody.forEach(function (declara) {
+        if(declara.type === "ImportDeclaration"){
+            if(/.jsx$/.test(declara.source.value)){
+                console.log('引入了jsxFile');
+            }
+        }
+    })
+
+}
+
+
+module.exports = AnalyseJsx;
 
 
 
