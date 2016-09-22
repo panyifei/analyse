@@ -1,11 +1,13 @@
 'use strict';
 //analyse a jsx file
+const path  = require('path');
 const esprima = require('esprima');
 const BabelCore = require("babel-core");
+const Help = require('../util/help');
 
 let AnalyseJsx = {};
 
-AnalyseJsx.analyse = (jsxFile) => {
+AnalyseJsx.analyse = (jsxFile ,pro) => {
 
     const filePath = jsxFile.__route;;
 
@@ -24,7 +26,10 @@ AnalyseJsx.analyse = (jsxFile) => {
     proBody.forEach(function (declara) {
         if(declara.type === "ImportDeclaration"){
             if(/.jsx$/.test(declara.source.value)){
-                console.log('引入了jsxFile');
+                let componentPath = path.join(filePath,'..',declara.source.value);
+                var component = Help.loop(pro, componentPath);
+                component.fatherComponent = jsxFile;
+                jsxFile.childComponent.push(component);
             }
         }
     })

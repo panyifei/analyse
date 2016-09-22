@@ -16,8 +16,10 @@ Fs.loop(project);
 //if the file type is "jsx" ,turn the File into jsxFile
 Fs.checkType(project);
 
-Analyse.loop(project);
+//analyse jsx file
+//get the child component
+Analyse.loop(project, project);
 
 //start a server and render the project
-// Server.startServer(project);
-// open("http://127.0.0.1:3000/");
+Server.startServer(project);
+open("http://127.0.0.1:3000/");
