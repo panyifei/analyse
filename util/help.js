@@ -6,7 +6,7 @@ var help = {};
 
 //check directory if useful
 help.checkUseful = name => {
-    const useless = ['.idea','.git','node_modules'];
+    const useless = ['.idea','.git','node_modules','dist','neurons'];
     if(useless.indexOf(name) == -1){
         return true;
     }else{

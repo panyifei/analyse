@@ -3,6 +3,7 @@
 let koa = require('koa');
 let app = koa();
 let render = require('./lib/render');
+let GenerateHtml = require('./lib/generateHtml');
 let server = require('koa-static');
 const logger = require('koa-logger');
 
@@ -23,9 +24,12 @@ app.use(route.get('/', list));
 
 function *list() {
     //对body进行设置就是返回的内容了
+    let projectHtml = GenerateHtml.getProjectHtml(project);
+    let jsxListsHtml = GenerateHtml.getJsxFileListsHtml(indexJsxFileList);
+
     this.body = yield render('index', {
-        project: project,
-        jsxLists: indexJsxFileList
+        projectHtml: projectHtml,
+        jsxListsHtml: jsxListsHtml
     });
 }
 

@@ -5,27 +5,12 @@
     <link rel="stylesheet" href="../static/css/index.css">
 </head>
 <body>
-<section class="project">
-    <p class="name">{{ project.name }}</p>
-    <section class="dir-list">
-        {% for dir in project.dirList %}
-        <section class="dir">
-            {{ dir.name }}
-        </section>
-        {% endfor %}
-    </section>
-    <section class="file-list">
-        {% for file in project.fileList %}
-        <section class="file">
-            {{ dir.file }}
-        </section>
-        {% endfor %}
-    </section>
-</section>
-<section class="jsx-file">
-    {% for jsxFile in jsxLists %}
-        <p class="name">{{ jsxFile.name }}</p>
-    {% endfor %}
-</section>
+{% autoescape false %}
+{{projectHtml}}
+{% endautoescape %}
+<div class="division"></div>
+{% autoescape false %}
+{{jsxListsHtml}}
+{% endautoescape %}
 </body>
 </html>
