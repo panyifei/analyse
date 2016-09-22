@@ -12,6 +12,7 @@ app.use(server(__dirname + '/.'));
 
 //代替数据库
 let project;
+let indexJsxFileList;
 
 //用来得到路径的中间件
 let route = require('koa-route');
@@ -22,13 +23,17 @@ app.use(route.get('/', list));
 
 function *list() {
     //对body进行设置就是返回的内容了
-    this.body = yield render('index', { project: project });
+    this.body = yield render('index', {
+        project: project,
+        jsxLists: indexJsxFileList
+    });
 }
 
 //监听3000端口,这里是可以监听多个端口的
 
-app.startServer = (pro) => {
+app.startServer = (pro , jsxLists) => {
     project = pro;
+    indexJsxFileList = jsxLists;
     app.listen(3000);
 };
 
