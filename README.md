@@ -1,4 +1,4 @@
 # Analyse
-Using to analyse a js project
+Using to analyse a react and redux project
 
-Analyse a project
+

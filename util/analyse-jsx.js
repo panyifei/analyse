@@ -32,7 +32,6 @@ AnalyseJsx.analyse = (jsxFile ,pro) => {
                 component.fatherComponent = jsxFile;
                 jsxFile.childComponent.push(component);
             }else if(declara.specifiers[0]){
-                console.log(declara);
                 let name = declara.specifiers[0].local.name;
                 if(new RegExp("React.createElement\\(" + name + ",","g").test(jscode)){
                     let componentPath = path.join(filePath,'..',declara.source.value + ".jsx");
@@ -41,7 +40,8 @@ AnalyseJsx.analyse = (jsxFile ,pro) => {
                         component.fatherComponent = jsxFile;
                         jsxFile.childComponent.push(component);
                     }else{
-                        console.log(colors.red('there is a jsx file named as js file'));
+                        console.log(colors.red('there is a jsx file named as js file or import from outsite'));
+                        console.log(declara.source.value);
                     }
                 }
             }
