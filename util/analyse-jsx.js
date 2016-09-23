@@ -33,6 +33,9 @@ AnalyseJsx.analyse = (jsxFile ,pro) => {
                 jsxFile.childComponent.push(component);
             }else if(declara.specifiers[0]){
                 let name = declara.specifiers[0].local.name;
+                if(name === "connect" && declara.source.value === "react-redux"){
+                    jsxFile.connectRedux = true;
+                }
                 if(new RegExp("React.createElement\\(" + name + ",","g").test(jscode)){
                     let componentPath = path.join(filePath,'..',declara.source.value + ".jsx");
                     var component = Help.loop(pro, componentPath);

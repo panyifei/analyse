@@ -32,7 +32,11 @@ GenerateHtml.getProjectHtml = pro => {
 GenerateHtml.getJsxFileListsHtml = lists => {
     let html = "";
     lists.forEach(function (file) {
-        html += "<section class='jsx-root'><p class='name'>" + file.name + "</p>";
+        if(file.connectRedux == true){
+            html += "<section class='jsx-root connect-redux'><p class='name'>" + file.name + "</p>";
+        }else{
+            html += "<section class='jsx-root'><p class='name'>" + file.name + "</p>";
+        }
         html += getChildHtml(file);
         html += "</section>";
     })
@@ -40,7 +44,11 @@ GenerateHtml.getJsxFileListsHtml = lists => {
     function getChildHtml(file) {
         let html = "";
         file.childComponent.forEach(function (value) {
-            html += "<section class='jsx'><p class='name'>" + value.name + "</p>";
+            if(value.connectRedux == true){
+                html += "<section class='jsx connect-redux'><p class='name'>" + value.name + "</p>";
+            }else{
+                html += "<section class='jsx'><p class='name'>" + value.name + "</p>";
+            }
             html += getChildHtml(value);
             html += "</section>";
         })

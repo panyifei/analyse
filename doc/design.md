@@ -20,4 +20,4 @@
  - jsx文件变成js文件(问题：我需要在我分析的地方也安装一个babel的插件才行)(npm install babel-plugin-transform-react-jsx)
  - es6的js变成es5
 
-4.分析一下连接store的情况,渲染一张图。
+4.分析一下连接store的情况,渲染一张图。  --2016年9月23日

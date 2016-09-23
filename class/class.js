@@ -29,6 +29,7 @@ class JsxFile extends File{
         super(file.__route, file.name);
         this.fatherComponent = null;
         this.childComponent = [];
+        this.connectRedux = false;
     }
 }
 
