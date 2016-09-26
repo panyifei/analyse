@@ -28,7 +28,7 @@ function *list() {
     let jsxListsHtml = GenerateHtml.getJsxFileListsHtml(indexJsxFileList);
 
     this.body = yield render('index', {
-        projectHtml: projectHtml,
+        projectHtml: '',
         jsxListsHtml: jsxListsHtml
     });
 }
