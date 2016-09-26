@@ -1,7 +1,7 @@
 {
   "name": "analyse",
-  "version": "0.0.1",
-  "description": "analyse js project",
+  "version": "1.0.0",
+  "description": "analyse react and redux project",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
